@@ -9,6 +9,7 @@ import Dashboard from "../Layout/Dashboard";
 import DashboardHome from "../Pages/Dashboard/DashboardHome/DashboardHome";
 import UpdateProfile from "../Pages/Dashboard/UpdateProfile/UpdateProfile";
 import AddService from "../Pages/Dashboard/AddService/AddService";
+import AllService from "../Pages/Dashboard/AllService/AllService";
 
 export const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
       {
         path: "addservice",
         element: <AddService />,
+      },
+      {
+        path: "allservice",
+        element: <AllService />,
       },
     ],
   },

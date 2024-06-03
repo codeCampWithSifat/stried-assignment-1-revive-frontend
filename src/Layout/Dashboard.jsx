@@ -44,6 +44,12 @@ const Dashboard = () => {
                 Add Service
               </Link>
             </li>
+            <li>
+              <Link to="/dashboard/allservice">
+                <RxDashboard />
+                All Service
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
