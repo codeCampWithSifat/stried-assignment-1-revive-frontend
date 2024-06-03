@@ -1,13 +1,13 @@
 import { useForm } from "react-hook-form";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import Swal from "sweetalert2";
 import useAuth from "../../../Hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const imageBB_Upload_Key = import.meta.env.VITE_imageBB_Upload_Secret;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${imageBB_Upload_Key}`;
-const AddService = () => {
+const EditService = () => {
   const {
     register,
     handleSubmit,
@@ -15,12 +15,12 @@ const AddService = () => {
     formState: { errors },
   } = useForm();
 
-  const { user } = useAuth();
-
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
   const navigate = useNavigate();
-  const handleLogin = async (data) => {
+  const { description, name, price, title, _id } = useLoaderData();
+  const handleUpdate = async (data) => {
     const formData = new FormData();
     const imageFile = { image: data.image[0] };
     formData.append("file", imageFile);
@@ -32,36 +32,37 @@ const AddService = () => {
 
     // console.log(res);
     if (res.data?.success) {
-      const menuItem = {
+      const serviceItem = {
         title: data.title,
         name: data.name,
         price: parseFloat(data.price),
         description: data.description,
         image: res.data?.data?.display_url,
       };
-      const addService = await axiosSecure.post(`/services`, menuItem);
-      if (addService.data?.insertedId) {
+      const addService = await axiosSecure.put(`/services/${_id}`, serviceItem);
+      if (addService.data?.acknowledged) {
         reset();
         navigate("/dashboard/allservice");
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: `${user.displayName} Add A Item Successfully`,
+          title: `${user.displayName} Update A Service Successfully`,
           showConfirmButton: false,
           timer: 1500,
         });
       }
     }
   };
+
   return (
     <div>
       <div className="h-[600px] flex justify-center items-center ">
-        <div className="w-96 p-4 mt-40">
+        <div className="w-3/4 p-4 mt-40">
           <h2 className="text-3xl text-center text-indigo-600 font-bold">
-            Add A Service{" "}
+            Update A Service{" "}
           </h2>
 
-          <form onSubmit={handleSubmit(handleLogin)}>
+          <form onSubmit={handleSubmit(handleUpdate)}>
             <div className="form-control w-full ">
               <label className="label">
                 <span className="label-text text-md">Title</span>
@@ -71,6 +72,7 @@ const AddService = () => {
                 type="text"
                 className="input input-bordered w-full "
                 placeholder="Enter Your Title"
+                defaultValue={title}
               />
               {errors.title && (
                 <p role="alert" className="text-red-600 my-2">
@@ -89,6 +91,7 @@ const AddService = () => {
                 type="text"
                 className="input input-bordered w-full "
                 placeholder="Enter Your Service Name"
+                defaultValue={name}
               />
               {errors.name && (
                 <p role="alert" className="text-red-600 my-2">
@@ -108,6 +111,7 @@ const AddService = () => {
                 type="number"
                 className="input input-bordered w-full "
                 placeholder="Enter Your Price"
+                defaultValue={price}
               />
               {errors.price && (
                 <p role="alert" className="text-red-600 my-2">
@@ -127,6 +131,7 @@ const AddService = () => {
                 type="text"
                 className="input input-bordered w-full "
                 placeholder="Enter Your description"
+                defaultValue={description}
               />
               {errors.description && (
                 <p role="alert" className="text-red-600 my-2">
@@ -156,7 +161,7 @@ const AddService = () => {
 
             <input
               type="submit"
-              value="Add Service"
+              value="Update Service"
               className="input input-bordered w-full bg-primary text-white my-4"
             />
           </form>
@@ -166,4 +171,4 @@ const AddService = () => {
   );
 };
 
-export default AddService;
+export default EditService;

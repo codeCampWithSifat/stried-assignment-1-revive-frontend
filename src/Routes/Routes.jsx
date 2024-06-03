@@ -10,6 +10,8 @@ import DashboardHome from "../Pages/Dashboard/DashboardHome/DashboardHome";
 import UpdateProfile from "../Pages/Dashboard/UpdateProfile/UpdateProfile";
 import AddService from "../Pages/Dashboard/AddService/AddService";
 import AllService from "../Pages/Dashboard/AllService/AllService";
+import EditService from "../Pages/Dashboard/EditService/EditService";
+import ServiceDetails from "../Pages/Dashboard/ServiceDetails/ServiceDetails";
 
 export const router = createBrowserRouter([
   {
@@ -64,6 +66,18 @@ export const router = createBrowserRouter([
       {
         path: "allservice",
         element: <AllService />,
+      },
+      {
+        path: "editservice/:id",
+        element: <EditService />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/services/${params.id}`),
+      },
+      {
+        path: "servicedetails/:id",
+        element: <ServiceDetails />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/services/${params.id}`),
       },
     ],
   },
