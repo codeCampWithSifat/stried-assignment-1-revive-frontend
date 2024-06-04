@@ -37,7 +37,12 @@ const Dashboard = () => {
                 User Profile
               </Link>
             </li>
-
+            <li>
+              <Link to="/dashboard/allservice">
+                <RxDashboard />
+                All Service
+              </Link>
+            </li>
             <li>
               <Link to="/dashboard/addservice">
                 <RxDashboard />
@@ -45,9 +50,9 @@ const Dashboard = () => {
               </Link>
             </li>
             <li>
-              <Link to="/dashboard/allservice">
+              <Link to="/dashboard/addreview">
                 <RxDashboard />
-                All Service
+                Add Review
               </Link>
             </li>
           </ul>

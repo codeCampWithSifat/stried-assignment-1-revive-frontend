@@ -2,13 +2,11 @@
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import { useQuery } from "@tanstack/react-query";
-import Loading from "../../../Components/Loading";
 
 /* eslint-disable react/prop-types */
 const SingleService = ({ service, refetch }) => {
   // console.log(service);
-  const { image, name, description, price, _id } = service;
+  const { image, name, description, price, _id, title } = service;
   const axiosSecure = useAxiosSecure();
 
   const handleDelete = (id) => {
@@ -42,11 +40,14 @@ const SingleService = ({ service, refetch }) => {
           <img src={image} alt="car!" />
         </figure>
         <div className="card-body text-center">
+          <h3 className="text-indigo-800 text-2xl font-bold">{title}</h3>
           <h3 className="text-indigo-800 text-2xl font-bold">{name}</h3>
           <h3 className="text-indigo-800 text-2xl font-bold">
             Price : $ {price}
           </h3>
-          <p>{description}</p>
+          <div className="text-justify">
+            <p>{description}</p>
+          </div>
         </div>
         <div className="flex justify-center">
           <div>

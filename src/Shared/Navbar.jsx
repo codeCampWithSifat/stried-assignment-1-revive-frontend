@@ -23,6 +23,9 @@ const Navbar = () => {
         <Link to="/review">Client Review</Link>
       </li>
       <li>
+        <Link to="/qna">Frequently Ask Qus</Link>
+      </li>
+      <li>
         <Link to="/dashboard/dashboardHome">Dashboard</Link>
       </li>
       {!user?.email ? (

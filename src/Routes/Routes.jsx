@@ -12,6 +12,8 @@ import AddService from "../Pages/Dashboard/AddService/AddService";
 import AllService from "../Pages/Dashboard/AllService/AllService";
 import EditService from "../Pages/Dashboard/EditService/EditService";
 import ServiceDetails from "../Pages/Dashboard/ServiceDetails/ServiceDetails";
+import AddReview from "../Pages/Dashboard/AddReview/AddReview";
+import Qan from "../Pages/Qan/Qan";
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +31,10 @@ export const router = createBrowserRouter([
             <ClientReview />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/qna",
+        element: <Qan />,
       },
       {
         path: "/login",
@@ -57,7 +63,9 @@ export const router = createBrowserRouter([
         path: "updateProfile/:id",
         element: <UpdateProfile />,
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/users/${params.id}`),
+          fetch(
+            `https://stried-assignment-1-revive-backend.vercel.app/users/${params.id}`
+          ),
       },
       {
         path: "addservice",
@@ -71,13 +79,21 @@ export const router = createBrowserRouter([
         path: "editservice/:id",
         element: <EditService />,
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/services/${params.id}`),
+          fetch(
+            `https://stried-assignment-1-revive-backend.vercel.app/services/${params.id}`
+          ),
       },
       {
         path: "servicedetails/:id",
         element: <ServiceDetails />,
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/services/${params.id}`),
+          fetch(
+            `https://stried-assignment-1-revive-backend.vercel.app/services/${params.id}`
+          ),
+      },
+      {
+        path: "addreview",
+        element: <AddReview />,
       },
     ],
   },
