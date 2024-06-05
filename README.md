@@ -1,9 +1,7 @@
-# React + Vite
+# Sifat_Spa_Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This guide will walk you through the process of setting up the University Management Core Service Starter project. By following these steps, you will clone the project, install dependencies, and configure Prisma for database management. Let's get started!
 
-Currently, two official plugins are available:
+### Follow these steps to make this website:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-# stried-assignment-1-revive-frontend
+1. Use React Js For Frontend
