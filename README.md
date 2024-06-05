@@ -4,4 +4,8 @@ This guide will walk you through the process of setting up the University Manage
 
 ### Follow these steps to make this website:
 
-1. Use React Js For Frontend
+1. Use React Js And Tailwind Css For Frontend
+2. Use React Router Dome For Routing
+3. Use Firebase For Authentication
+4. Implement JWT For Authectication
+5. Implement CRUD And Searching
